@@ -6,9 +6,10 @@ import { checkGuess } from "@/lib/game";
 interface ShareButtonProps {
   guesses: string[];
   won: boolean;
+  solution: string;
 }
 
-export default function ShareButton({ guesses, won }: ShareButtonProps) {
+export default function ShareButton({ guesses, won, solution }: ShareButtonProps) {
   const { toast } = useToast();
 
   const generateShareText = () => {
@@ -18,7 +19,7 @@ export default function ShareButton({ guesses, won }: ShareButtonProps) {
 
     // Generate grid representation
     const gridRows = guesses.map(guess => {
-      const result = checkGuess(guess, window.solution);
+      const result = checkGuess(guess, solution);
       return result.map(r => {
         if (r === "correct") return "🟩";
         if (r === "present") return "🟨";
