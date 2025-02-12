@@ -12,7 +12,7 @@ export default function Grid({ guesses, currentGuess, solution }: GridProps) {
   const empties = Array(6 - guesses.length - 1).fill("");
 
   return (
-    <div className={`grid grid-cols-${solution.length} gap-2`}>
+    <div className={`grid grid-cols-${solution.length} gap-1.5 mx-auto w-fit`}>
       {guesses.map((guess, i) => (
         <Row key={i} guess={guess} solution={solution} />
       ))}
