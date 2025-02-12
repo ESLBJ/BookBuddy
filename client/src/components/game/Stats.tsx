@@ -10,9 +10,9 @@ import { BarChart } from "lucide-react";
 
 export default function Stats() {
   const stats = JSON.parse(localStorage.getItem("stats") || "{}");
-  const played = stats.played || 0;
-  const wins = stats.wins || 0;
-  const winPercentage = played > 0 ? Math.round((wins / played) * 100) : 0;
+  const totalRounds = stats.totalRounds || 0;
+  const wonRounds = stats.wonRounds || 0;
+  const winPercentage = totalRounds > 0 ? Math.round((wonRounds / totalRounds) * 100) : 0;
 
   return (
     <Dialog>
@@ -25,10 +25,14 @@ export default function Stats() {
         <DialogHeader>
           <DialogTitle>Statistics</DialogTitle>
         </DialogHeader>
-        <div className="grid grid-cols-2 gap-4 py-4">
+        <div className="grid grid-cols-3 gap-4 py-4">
           <div className="text-center">
-            <div className="text-2xl font-bold">{played}</div>
-            <div className="text-sm text-muted-foreground">Played</div>
+            <div className="text-2xl font-bold">{totalRounds}</div>
+            <div className="text-sm text-muted-foreground">Total Rounds</div>
+          </div>
+          <div className="text-center">
+            <div className="text-2xl font-bold">{wonRounds}</div>
+            <div className="text-sm text-muted-foreground">Won Rounds</div>
           </div>
           <div className="text-center">
             <div className="text-2xl font-bold">{winPercentage}%</div>
