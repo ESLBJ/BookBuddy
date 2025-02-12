@@ -1,27 +1,18 @@
-import { Switch, Route } from "wouter";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "./lib/queryClient";
-import { Toaster } from "@/components/ui/toaster";
+
 import { ThemeProvider } from "@/components/ThemeProvider";
-import Game from "@/pages/game";
+import { Toaster } from "@/components/ui/toaster";
+import { Switch, Route } from "wouter";
+import Game from "./pages/game";
+import NotFound from "./pages/not-found";
 
-function Router() {
+export default function App() {
   return (
-    <Switch>
-      <Route path="/" component={Game} />
-    </Switch>
-  );
-}
-
-function App() {
-  return (
-    <ThemeProvider defaultTheme="light" storageKey="dewey-theme">
-      <QueryClientProvider client={queryClient}>
-        <Router />
-        <Toaster />
-      </QueryClientProvider>
+    <ThemeProvider>
+      <Switch>
+        <Route path="/" component={Game} />
+        <Route component={NotFound} />
+      </Switch>
+      <Toaster />
     </ThemeProvider>
   );
 }
-
-export default App;
