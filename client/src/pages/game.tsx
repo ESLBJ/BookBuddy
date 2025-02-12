@@ -80,7 +80,7 @@ export default function Game() {
               <ThemeToggle />
               <Stats />
               {(gameWon || gameLost) && (
-                <ShareButton guesses={guesses} won={gameWon} />
+                <ShareButton guesses={guesses} won={gameWon} solution={solution} />
               )}
             </div>
           </div>
