@@ -59,6 +59,22 @@ export default function Game() {
     }
   };
 
+  // Add keyboard event listener
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Enter") {
+        handleKeyPress("Enter");
+      } else if (e.key === "Backspace") {
+        handleKeyPress("Backspace");
+      } else if (/^\d$/.test(e.key)) {
+        handleKeyPress(e.key);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [currentGuess, guesses, gameWon, gameLost]); // Add dependencies
+
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <Card className="w-full max-w-lg">
