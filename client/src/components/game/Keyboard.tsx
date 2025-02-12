@@ -9,13 +9,10 @@ interface KeyboardProps {
 
 export default function Keyboard({ onKeyPress, guesses, solution }: KeyboardProps) {
   const keys = [
-    ["1", "2", "3", "A", "B", "C"],
-    ["4", "5", "6", "D", "E", "F"],
-    ["7", "8", "9", "G", "H", "I"],
-    ["J", "K", "L", "M", "N", "O"],
-    ["P", "Q", "R", "S", "T", "U"],
-    ["V", "W", "X", "Y", "Z", "0"],
-    ["Backspace", "Enter"]
+    ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+    ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
+    ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
+    ["Enter", "Z", "X", "C", "V", "B", "N", "M", "Backspace"]
   ];
 
   const getKeyState = (key: string) => {
