@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Grid from "@/components/game/Grid";
 import Keyboard from "@/components/game/Keyboard";
@@ -26,7 +26,7 @@ export default function Game() {
     }
   }, []);
 
-  const handleKeyPress = useCallback((key: string) => {
+  const handleKeyPress = (key: string) => {
     if (gameWon || gameLost) return;
 
     if (key === "Enter") {
@@ -57,16 +57,7 @@ export default function Game() {
     } else if (/^\d$/.test(key) && currentGuess.length < 6) {
       setCurrentGuess(prev => prev + key);
     }
-  }, [currentGuess, guesses, gameWon, gameLost, solution, toast]);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      handleKeyPress(e.key);
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleKeyPress]);
+  };
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
