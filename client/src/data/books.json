@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Introduction to Philosophy",
+    "ddc": "100000"
+  },
+  {
+    "title": "World Religions",
+    "ddc": "200000"
+  },
+  {
+    "title": "Sociology: An Overview",
+    "ddc": "300000"
+  },
+  {
+    "title": "English Language",
+    "ddc": "420000"
+  },
+  {
+    "title": "Physics Principles",
+    "ddc": "530000"
+  },
+  {
+    "title": "Human Biology",
+    "ddc": "571000"
+  },
+  {
+    "title": "Modern Architecture",
+    "ddc": "720000"
+  },
+  {
+    "title": "World Literature",
+    "ddc": "800000"
+  },
+  {
+    "title": "Ancient History",
+    "ddc": "930000"
+  },
+  {
+    "title": "Modern History",
+    "ddc": "940000"
+  }
+]
