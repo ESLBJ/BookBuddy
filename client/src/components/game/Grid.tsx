@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { checkGuess } from "@/lib/game";
 
@@ -34,7 +35,7 @@ function Row({ guess, solution }: { guess: string; solution: string }) {
           initial={{ rotateX: 0 }}
           animate={{ rotateX: 360 }}
           className={`
-            aspect-square flex items-center justify-center font-bold text-lg border rounded-md w-12 h-12
+            aspect-square flex items-center justify-center font-bold text-xl border-2
             ${result[i] === "correct" && "bg-green-500 text-white border-green-600"}
             ${result[i] === "present" && "bg-yellow-500 text-white border-yellow-600"}
             ${result[i] === "absent" && "bg-gray-500 text-white border-gray-600"}
@@ -55,7 +56,7 @@ function CurrentRow({ guess, solution }: { guess: string, solution: string }) {
       {chars.map((char, i) => (
         <div
           key={i}
-          className="aspect-square flex items-center justify-center font-bold text-lg border rounded-md w-12 h-12 border-gray-300"
+          className="aspect-square flex items-center justify-center font-bold text-xl border-2 border-gray-300"
         >
           {char !== " " ? char : ""}
         </div>
@@ -70,7 +71,7 @@ function EmptyRow({ solution }: { solution: string }) {
       {Array(solution.length).fill("").map((_, i) => (
         <div
           key={i}
-          className="aspect-square border rounded-md w-12 h-12 border-gray-200"
+          className="aspect-square border-2 border-gray-200"
         />
       ))}
     </>
