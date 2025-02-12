@@ -25,28 +25,23 @@ export default function Grid({ guesses, currentGuess, solution }: GridProps) {
 
 function Row({ guess, solution }: { guess: string; solution: string }) {
   const result = checkGuess(guess, solution);
-  const hasNumbers = /\d/.test(solution);
-  const shouldAddPeriod = solution.length > 3 && hasNumbers;
 
   return (
     <>
       {guess.split("").map((char, i) => (
-        <>
-          <motion.div
-            key={`box-${i}`}
-            initial={{ rotateX: 0 }}
-            animate={{ rotateX: 360 }}
-            className={`
-              w-[50px] h-[50px] flex items-center justify-center font-bold text-xl border-2
-              ${result[i] === "correct" && "bg-green-500 text-white border-green-600"}
-              ${result[i] === "present" && "bg-yellow-500 text-white border-yellow-600"}
-              ${result[i] === "absent" && "bg-gray-500 text-white border-gray-600"}
-            `}
-          >
-            {char}
-          </motion.div>
-          {shouldAddPeriod && i === 2 && <div className="text-2xl font-bold px-1">.</div>}
-        </>
+        <motion.div
+          key={i}
+          initial={{ rotateX: 0 }}
+          animate={{ rotateX: 360 }}
+          className={`
+            w-[50px] h-[50px] flex items-center justify-center font-bold text-xl border-2
+            ${result[i] === "correct" && "bg-green-500 text-white border-green-600"}
+            ${result[i] === "present" && "bg-yellow-500 text-white border-yellow-600"}
+            ${result[i] === "absent" && "bg-gray-500 text-white border-gray-600"}
+          `}
+        >
+          {char}
+        </motion.div>
       ))}
     </>
   );
@@ -54,40 +49,29 @@ function Row({ guess, solution }: { guess: string; solution: string }) {
 
 function CurrentRow({ guess, solution }: { guess: string, solution: string }) {
   const chars = guess.padEnd(solution.length, " ").split("");
-  const hasNumbers = /\d/.test(solution);
-  const shouldAddPeriod = solution.length > 3 && hasNumbers;
 
   return (
     <>
       {chars.map((char, i) => (
-        <>
-          <div
-            key={`box-${i}`}
-            className="w-[50px] h-[50px] flex items-center justify-center font-bold text-xl border-2 border-gray-300"
-          >
-            {char !== " " ? char : ""}
-          </div>
-          {shouldAddPeriod && i === 2 && <div className="text-2xl font-bold px-1">.</div>}
-        </>
+        <div
+          key={i}
+          className="w-[50px] h-[50px] flex items-center justify-center font-bold text-xl border-2 border-gray-300"
+        >
+          {char !== " " ? char : ""}
+        </div>
       ))}
     </>
   );
 }
 
 function EmptyRow({ solution }: { solution: string }) {
-  const hasNumbers = /\d/.test(solution);
-  const shouldAddPeriod = solution.length > 3 && hasNumbers;
-
   return (
     <>
       {Array(solution.length).fill("").map((_, i) => (
-        <>
-          <div
-            key={`box-${i}`}
-            className="w-[50px] h-[50px] border-2 border-gray-200"
-          />
-          {shouldAddPeriod && i === 2 && <div className="text-2xl font-bold px-1">.</div>}
-        </>
+        <div
+          key={i}
+          className="w-[50px] h-[50px] border-2 border-gray-200"
+        />
       ))}
     </>
   );
