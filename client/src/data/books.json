@@ -1,42 +1,52 @@
 [
   {
     "title": "Introduction to Philosophy",
+    "author": "William James",
     "ddc": "100000"
   },
   {
     "title": "World Religions",
+    "author": "Huston Smith",
     "ddc": "200000"
   },
   {
     "title": "Sociology: An Overview",
+    "author": "Anthony Giddens",
     "ddc": "300000"
   },
   {
     "title": "English Language",
+    "author": "David Crystal",
     "ddc": "420000"
   },
   {
     "title": "Physics Principles",
+    "author": "Richard Feynman",
     "ddc": "530000"
   },
   {
     "title": "Human Biology",
+    "author": "Sylvia S. Mader",
     "ddc": "571000"
   },
   {
     "title": "Modern Architecture",
+    "author": "Le Corbusier",
     "ddc": "720000"
   },
   {
     "title": "World Literature",
+    "author": "Harold Bloom",
     "ddc": "800000"
   },
   {
     "title": "Ancient History",
+    "author": "Mary Beard",
     "ddc": "930000"
   },
   {
     "title": "Modern History",
+    "author": "Eric Hobsbawm",
     "ddc": "940000"
   }
 ]
