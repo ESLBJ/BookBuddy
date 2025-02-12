@@ -44,7 +44,7 @@ function Row({ guess, solution }: { guess: string; solution: string }) {
           {char}
         </motion.div>
       ))}
-      <div className="flex items-end justify-center pb-2 font-bold text-xl">.</div>
+      <div className="absolute left-[calc(50%-0.5rem)] top-[calc(50%-0.5rem)] font-bold text-xl">.</div>
       {chars.slice(3).map((char, i) => (
         <motion.div
           key={i + 3}
@@ -77,7 +77,7 @@ function CurrentRow({ guess }: { guess: string }) {
           {char !== " " ? char : ""}
         </div>
       ))}
-      <div className="flex items-end justify-center pb-2 font-bold text-xl">.</div>
+      <div className="absolute left-[calc(50%-0.5rem)] top-[calc(50%-0.5rem)] font-bold text-xl">.</div>
       {chars.slice(3).map((char, i) => (
         <div
           key={i + 3}
@@ -99,7 +99,7 @@ function EmptyRow() {
           className="aspect-square border-2 border-gray-200"
         />
       ))}
-      <div className="flex items-end justify-center pb-2 font-bold text-xl">.</div>
+      <div className="absolute left-[calc(50%-0.5rem)] top-[calc(50%-0.5rem)] font-bold text-xl">.</div>
       {Array(3).fill("").map((_, i) => (
         <div
           key={i + 3}
