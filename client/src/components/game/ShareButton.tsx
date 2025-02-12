@@ -20,10 +20,11 @@ export default function ShareButton({ guesses, won, solution }: ShareButtonProps
     // Generate grid representation
     const gridRows = guesses.map(guess => {
       const result = checkGuess(guess, solution);
-      return result.map(r => {
-        if (r === "correct") return "🟩";
-        if (r === "present") return "🟨";
-        return "⬜";
+      // Insert period after third digit in the display
+      return result.map((r, i) => {
+        const box = r === "correct" ? "🟩" : r === "present" ? "🟨" : "⬜";
+        // Add period after the third box
+        return i === 2 ? box + "." : box;
       }).join("");
     }).join("\n");
 
