@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Share } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { checkGuess } from "@/lib/game";
 
 interface ShareButtonProps {
   guesses: string[];
@@ -13,33 +14,32 @@ export default function ShareButton({ guesses, won }: ShareButtonProps) {
   const generateShareText = () => {
     const date = new Date().toLocaleDateString();
     const attempts = guesses.length;
-    const emoji = won ? "🟩" : "🟥";
-    
-    return `Dewey Guess ${date}\n${attempts}/6 ${emoji}\n\n${window.location.href}`;
+    const resultEmoji = won ? "🎯" : "❌";
+
+    // Generate grid representation
+    const gridRows = guesses.map(guess => {
+      const result = checkGuess(guess, window.solution);
+      return result.map(r => {
+        if (r === "correct") return "🟩";
+        if (r === "present") return "🟨";
+        return "⬜";
+      }).join("");
+    }).join("\n");
+
+    return `Dewey Guess ${date}\n${attempts}/6 ${resultEmoji}\n\n${gridRows}`;
   };
 
-  const handleShare = async () => {
+  const copyToClipboard = async () => {
     const text = generateShareText();
-    
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          text,
-        });
-      } catch (err) {
-        console.error("Error sharing:", err);
-      }
-    } else {
-      await navigator.clipboard.writeText(text);
-      toast({
-        title: "Copied to clipboard!",
-        description: "Share your result with friends",
-      });
-    }
+    await navigator.clipboard.writeText(text);
+    toast({
+      title: "Copied to clipboard!",
+      description: "Share your result with friends",
+    });
   };
 
   return (
-    <Button onClick={handleShare} variant="outline" size="icon">
+    <Button onClick={copyToClipboard} variant="outline" size="icon">
       <Share className="h-4 w-4" />
     </Button>
   );
