@@ -25,28 +25,23 @@ export default function Grid({ guesses, currentGuess, solution }: GridProps) {
 
 function Row({ guess, solution }: { guess: string; solution: string }) {
   const result = checkGuess(guess, solution);
-  const isNumerical = /^\d+$/.test(solution);
-  const shouldAddPeriod = isNumerical && solution.length > 3;
 
   return (
     <>
       {guess.split("").map((char, i) => (
-        <>
-          <motion.div
-            key={`box-${i}`}
-            initial={{ rotateX: 0 }}
-            animate={{ rotateX: 360 }}
-            className={`
-              w-[50px] h-[50px] flex items-center justify-center font-bold text-xl border-2
-              ${result[i] === "correct" && "bg-green-500 text-white border-green-600"}
-              ${result[i] === "present" && "bg-yellow-500 text-white border-yellow-600"}
-              ${result[i] === "absent" && "bg-gray-500 text-white border-gray-600"}
-            `}
-          >
-            {char}
-          </motion.div>
-          {shouldAddPeriod && i === 2 && <div className="text-2xl font-bold">.</div>}
-        </>
+        <motion.div
+          key={i}
+          initial={{ rotateX: 0 }}
+          animate={{ rotateX: 360 }}
+          className={`
+            aspect-[1.05] flex items-center justify-center font-bold text-xl border-2
+            ${result[i] === "correct" && "bg-green-500 text-white border-green-600"}
+            ${result[i] === "present" && "bg-yellow-500 text-white border-yellow-600"}
+            ${result[i] === "absent" && "bg-gray-500 text-white border-gray-600"}
+          `}
+        >
+          {char}
+        </motion.div>
       ))}
     </>
   );
@@ -60,7 +55,7 @@ function CurrentRow({ guess, solution }: { guess: string, solution: string }) {
       {chars.map((char, i) => (
         <div
           key={i}
-          className="w-[50px] h-[50px] flex items-center justify-center font-bold text-xl border-2 border-gray-300"
+          className="aspect-[1.05] flex items-center justify-center font-bold text-xl border-2 border-gray-300"
         >
           {char !== " " ? char : ""}
         </div>
@@ -75,7 +70,7 @@ function EmptyRow({ solution }: { solution: string }) {
       {Array(solution.length).fill("").map((_, i) => (
         <div
           key={i}
-          className="w-[50px] h-[50px] border-2 border-gray-200"
+          className="aspect-[1.05] border-2 border-gray-200"
         />
       ))}
     </>
