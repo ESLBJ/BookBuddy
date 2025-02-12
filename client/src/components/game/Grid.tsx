@@ -11,7 +11,12 @@ export default function Grid({ guesses, currentGuess, solution }: GridProps) {
   const empties = Array(6 - guesses.length - 1).fill("");
 
   return (
-    <div className={`grid grid-cols-${solution.length} gap-1.5 mx-auto w-fit`}>
+    <div className={`grid grid-cols-${solution.length} gap-1.5 mx-auto w-fit relative`}>
+      {solution.length > 3 && /\d/.test(solution) && (
+        <div className="absolute text-[8px] left-[152px] top-1/2 transform -translate-y-1/2 pointer-events-none">
+          .
+        </div>
+      )}
       {guesses.map((guess, i) => (
         <Row key={i} guess={guess} solution={solution} />
       ))}
