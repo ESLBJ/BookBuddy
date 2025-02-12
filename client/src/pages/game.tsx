@@ -60,8 +60,8 @@ export default function Game() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4">
-      <Card className="w-full max-w-lg">
+    <div className="min-h-screen bg-background flex items-center justify-center p-2 sm:p-4">
+      <Card className="w-full max-w-lg min-h-[100vh] sm:min-h-0">
         <CardHeader>
           <CardTitle className="text-2xl text-center">Dewey Guess</CardTitle>
           <div className="text-center">
@@ -74,7 +74,7 @@ export default function Game() {
           <div className="mt-8">
             <Keyboard onKeyPress={handleKeyPress} guesses={guesses} solution={solution} />
           </div>
-          <div className="mt-6 flex justify-between items-center">
+          <div className="mt-6 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
             <Timer />
             <div className="flex gap-2">
               <ThemeToggle />
