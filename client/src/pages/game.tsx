@@ -14,7 +14,7 @@ export default function Game() {
   const [currentGuess, setCurrentGuess] = useState("");
   const [gameWon, setGameWon] = useState(false);
   const [gameLost, setGameLost] = useState(false);
-  const [dailyBook, solution] = getDailyBook();
+  const [dailyBook, dailyAuthor, solution] = getDailyBook();
 
   useEffect(() => {
     const state = getGameState();
@@ -27,7 +27,7 @@ export default function Game() {
 
   const handleKeyPress = (key: string) => {
     if (gameWon || gameLost) return;
-    
+
     if (key === "Enter") {
       if (currentGuess.length !== 6) {
         toast({
@@ -37,7 +37,7 @@ export default function Game() {
         });
         return;
       }
-      
+
       const newGuesses = [...guesses, currentGuess];
       setGuesses(newGuesses);
       setCurrentGuess("");
@@ -63,7 +63,10 @@ export default function Game() {
       <Card className="w-full max-w-lg">
         <CardHeader>
           <CardTitle className="text-2xl text-center">Dewey Guess</CardTitle>
-          <p className="text-center text-muted-foreground">{dailyBook}</p>
+          <div className="text-center">
+            <p className="text-lg">{dailyBook}</p>
+            <p className="text-sm text-muted-foreground">by {dailyAuthor}</p>
+          </div>
         </CardHeader>
         <CardContent>
           <Grid guesses={guesses} currentGuess={currentGuess} solution={solution} />

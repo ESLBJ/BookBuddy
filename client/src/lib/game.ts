@@ -2,14 +2,15 @@ import booksData from "../data/books.json";
 
 export interface Book {
   title: string;
+  author: string;
   ddc: string;
 }
 
-export function getDailyBook(): [string, string] {
+export function getDailyBook(): [string, string, string] {
   const today = new Date().toDateString();
   const index = Math.abs(hashCode(today) % booksData.length);
   const book = booksData[index];
-  return [book.title, book.ddc];
+  return [book.title, book.author, book.ddc];
 }
 
 export function checkGuess(guess: string, solution: string): ("correct" | "present" | "absent")[] {
