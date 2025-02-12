@@ -5,6 +5,7 @@ import Keyboard from "@/components/game/Keyboard";
 import Stats from "@/components/game/Stats";
 import Timer from "@/components/game/Timer";
 import ShareButton from "@/components/game/ShareButton";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { getDailyBook, checkGuess, getGameState, saveGameState } from "@/lib/game";
 import { useToast } from "@/hooks/use-toast";
 
@@ -75,10 +76,13 @@ export default function Game() {
           </div>
           <div className="mt-6 flex justify-between items-center">
             <Timer />
-            <Stats />
-            {(gameWon || gameLost) && (
-              <ShareButton guesses={guesses} won={gameWon} />
-            )}
+            <div className="flex gap-2">
+              <ThemeToggle />
+              <Stats />
+              {(gameWon || gameLost) && (
+                <ShareButton guesses={guesses} won={gameWon} />
+              )}
+            </div>
           </div>
         </CardContent>
       </Card>
