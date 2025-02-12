@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { checkGuess } from "@/lib/game";
 
@@ -29,22 +30,19 @@ function Row({ guess, solution }: { guess: string; solution: string }) {
   return (
     <>
       {guess.split("").map((char, i) => (
-        <>
-          <motion.div
-            key={i}
-            initial={{ rotateX: 0 }}
-            animate={{ rotateX: 360 }}
-            className={`
-              aspect-square flex items-center justify-center font-bold text-xl border-2
-              ${result[i] === "correct" && "bg-green-500 text-white border-green-600"}
-              ${result[i] === "present" && "bg-yellow-500 text-white border-yellow-600"}
-              ${result[i] === "absent" && "bg-gray-500 text-white border-gray-600"}
-            `}
-          >
-            {char}
-          </motion.div>
-          {i === 2 && <div className="flex items-center justify-center font-bold text-xl">.</div>}
-        </>
+        <motion.div
+          key={i}
+          initial={{ rotateX: 0 }}
+          animate={{ rotateX: 360 }}
+          className={`
+            aspect-square flex items-center justify-center font-bold text-xl border-2
+            ${result[i] === "correct" && "bg-green-500 text-white border-green-600"}
+            ${result[i] === "present" && "bg-yellow-500 text-white border-yellow-600"}
+            ${result[i] === "absent" && "bg-gray-500 text-white border-gray-600"}
+          `}
+        >
+          {char}
+        </motion.div>
       ))}
     </>
   );
@@ -56,15 +54,12 @@ function CurrentRow({ guess }: { guess: string }) {
   return (
     <>
       {chars.map((char, i) => (
-        <>
-          <div
-            key={i}
-            className="aspect-square flex items-center justify-center font-bold text-xl border-2 border-gray-300"
-          >
-            {char !== " " ? char : ""}
-          </div>
-          {i === 2 && <div className="flex items-center justify-center font-bold text-xl">.</div>}
-        </>
+        <div
+          key={i}
+          className="aspect-square flex items-center justify-center font-bold text-xl border-2 border-gray-300"
+        >
+          {char !== " " ? char : ""}
+        </div>
       ))}
     </>
   );
@@ -74,13 +69,10 @@ function EmptyRow() {
   return (
     <>
       {Array(6).fill("").map((_, i) => (
-        <>
-          <div
-            key={i}
-            className="aspect-square border-2 border-gray-200"
-          />
-          {i === 2 && <div className="flex items-center justify-center font-bold text-xl">.</div>}
-        </>
+        <div
+          key={i}
+          className="aspect-square border-2 border-gray-200"
+        />
       ))}
     </>
   );
