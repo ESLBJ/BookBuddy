@@ -60,14 +60,16 @@ export function saveGameState(guesses: string[], won: boolean, lost: boolean) {
     won,
     lost,
   };
-  
+
   localStorage.setItem("gameState", JSON.stringify(state));
-  
-  // Update statistics
-  const stats = JSON.parse(localStorage.getItem("stats") || "{}");
-  stats.played = (stats.played || 0) + 1;
-  if (won) stats.wins = (stats.wins || 0) + 1;
-  localStorage.setItem("stats", JSON.stringify(stats));
+
+  // Only update statistics if the game is complete (won or lost)
+  if (won || lost) {
+    const stats = JSON.parse(localStorage.getItem("stats") || "{}");
+    stats.totalRounds = (stats.totalRounds || 0) + 1;
+    if (won) stats.wonRounds = (stats.wonRounds || 0) + 1;
+    localStorage.setItem("stats", JSON.stringify(stats));
+  }
 }
 
 function hashCode(str: string): number {
