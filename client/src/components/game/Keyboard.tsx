@@ -9,10 +9,13 @@ interface KeyboardProps {
 
 export default function Keyboard({ onKeyPress, guesses, solution }: KeyboardProps) {
   const keys = [
-    ["1", "2", "3"],
-    ["4", "5", "6"],
-    ["7", "8", "9"],
-    ["Backspace", "0", "Enter"]
+    ["1", "2", "3", "A", "B", "C"],
+    ["4", "5", "6", "D", "E", "F"],
+    ["7", "8", "9", "G", "H", "I"],
+    ["J", "K", "L", "M", "N", "O"],
+    ["P", "Q", "R", "S", "T", "U"],
+    ["V", "W", "X", "Y", "Z", "0"],
+    ["Backspace", "Enter"]
   ];
 
   const getKeyState = (key: string) => {
@@ -44,7 +47,7 @@ export default function Keyboard({ onKeyPress, guesses, solution }: KeyboardProp
                 onClick={() => onKeyPress(key)}
                 variant={state === "default" ? "outline" : "default"}
                 className={`
-                  w-12 h-12 p-0 font-bold
+                  w-10 h-10 p-0 font-bold text-sm
                   ${state === "correct" && "bg-green-500 hover:bg-green-600"}
                   ${state === "present" && "bg-yellow-500 hover:bg-yellow-600"}
                   ${state === "absent" && "bg-gray-500 hover:bg-gray-600"}
