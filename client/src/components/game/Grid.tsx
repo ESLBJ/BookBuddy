@@ -34,7 +34,7 @@ function Row({ guess, solution }: { guess: string; solution: string }) {
           initial={{ rotateX: 0 }}
           animate={{ rotateX: 360 }}
           className={`
-            aspect-[1.05] flex items-center justify-center font-bold text-xl border-2
+            w-[50px] h-[50px] flex items-center justify-center font-bold text-xl border-2
             ${result[i] === "correct" && "bg-green-500 text-white border-green-600"}
             ${result[i] === "present" && "bg-yellow-500 text-white border-yellow-600"}
             ${result[i] === "absent" && "bg-gray-500 text-white border-gray-600"}
@@ -55,7 +55,7 @@ function CurrentRow({ guess, solution }: { guess: string, solution: string }) {
       {chars.map((char, i) => (
         <div
           key={i}
-          className="aspect-[1.05] flex items-center justify-center font-bold text-xl border-2 border-gray-300"
+          className="w-[50px] h-[50px] flex items-center justify-center font-bold text-xl border-2 border-gray-300"
         >
           {char !== " " ? char : ""}
         </div>
@@ -70,7 +70,7 @@ function EmptyRow({ solution }: { solution: string }) {
       {Array(solution.length).fill("").map((_, i) => (
         <div
           key={i}
-          className="aspect-[1.05] border-2 border-gray-200"
+          className="w-[50px] h-[50px] border-2 border-gray-200"
         />
       ))}
     </>
