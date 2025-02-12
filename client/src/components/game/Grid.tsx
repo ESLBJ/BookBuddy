@@ -12,13 +12,13 @@ export default function Grid({ guesses, currentGuess, solution }: GridProps) {
   const empties = Array(6 - guesses.length - 1).fill("");
 
   return (
-    <div className="grid grid-cols-6 gap-2">
+    <div className={`grid grid-cols-${solution.length} gap-2`}>
       {guesses.map((guess, i) => (
         <Row key={i} guess={guess} solution={solution} />
       ))}
-      {guesses.length < 6 && <CurrentRow guess={currentGuess} />}
+      {guesses.length < 6 && <CurrentRow guess={currentGuess} solution={solution} />}
       {empties.map((_, i) => (
-        <EmptyRow key={i} />
+        <EmptyRow key={i} solution={solution} />
       ))}
     </div>
   );
@@ -49,7 +49,7 @@ function Row({ guess, solution }: { guess: string; solution: string }) {
 }
 
 function CurrentRow({ guess }: { guess: string }) {
-  const chars = guess.padEnd(6, " ").split("");
+  const chars = guess.padEnd(solution.length, " ").split("");
 
   return (
     <>
@@ -65,10 +65,10 @@ function CurrentRow({ guess }: { guess: string }) {
   );
 }
 
-function EmptyRow() {
+function EmptyRow({ solution }: { solution: string }) {
   return (
     <>
-      {Array(6).fill("").map((_, i) => (
+      {Array(solution.length).fill("").map((_, i) => (
         <div
           key={i}
           className="aspect-square border-2 border-gray-200"
