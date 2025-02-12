@@ -33,9 +33,9 @@ export default function Keyboard({ onKeyPress, guesses, solution }: KeyboardProp
   };
 
   return (
-    <div className="grid gap-2">
+    <div className="grid gap-1.5 max-w-3xl mx-auto px-1">
       {keys.map((row, i) => (
-        <div key={i} className="flex justify-center gap-2">
+        <div key={i} className="flex justify-center gap-1.5">
           {row.map(key => {
             const state = getKeyState(key);
             return (
@@ -44,12 +44,12 @@ export default function Keyboard({ onKeyPress, guesses, solution }: KeyboardProp
                 onClick={() => onKeyPress(key)}
                 variant={state === "default" ? "outline" : "default"}
                 className={`
-                  w-10 h-10 p-0 font-bold text-sm
+                  w-9 h-10 p-0 font-bold text-sm
                   ${state === "correct" && "bg-green-500 hover:bg-green-600"}
                   ${state === "present" && "bg-yellow-500 hover:bg-yellow-600"}
                   ${state === "absent" && "bg-gray-500 hover:bg-gray-600"}
-                  ${key === "Enter" && "w-20"}
-                  ${key === "Backspace" && "w-20"}
+                  ${key === "Enter" && "w-14"}
+                  ${key === "Backspace" && "w-14"}
                 `}
               >
                 {key === "Backspace" ? "⌫" : key}
