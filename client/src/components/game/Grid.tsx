@@ -48,7 +48,7 @@ function Row({ guess, solution }: { guess: string; solution: string }) {
   );
 }
 
-function CurrentRow({ guess }: { guess: string }) {
+function CurrentRow({ guess, solution }: { guess: string, solution: string }) {
   const chars = guess.padEnd(solution.length, " ").split("");
 
   return (
